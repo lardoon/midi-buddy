@@ -12,6 +12,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatCardModule } from "@angular/material/card";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
+import { MatTableModule} from '@angular/material/table';
 
 import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.component";
 
@@ -26,7 +27,8 @@ import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.compo
     MatChipsModule,
     MatCardModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   declarations: [AppComponent, DrumkitCreatorComponent],
   bootstrap: [AppComponent],

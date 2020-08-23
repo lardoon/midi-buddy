@@ -27,6 +27,13 @@ export class DrumkitCreatorComponent implements OnInit {
     "Sound Effects"
   ];
 
+  displayedColumns = [
+    'name',
+    'startNumber',
+    'endNumber',
+    'middleC4Number'
+  ]
+
   constructor() {
     this.instrumentOptions.sort();
     this.instrumentOptions.unshift('Drums');
