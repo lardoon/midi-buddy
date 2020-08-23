@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import {MatTable} from '@angular/material/table';
 
 @Component({
   selector: "app-drumkit-creator",
@@ -31,7 +32,8 @@ export class DrumkitCreatorComponent implements OnInit {
     'name',
     'startNumber',
     'endNumber',
-    'middleC4Number'
+    'middleC4Number',
+    'controls'
   ]
 
   constructor() {
@@ -48,11 +50,15 @@ export class DrumkitCreatorComponent implements OnInit {
       endNumber: 127,
       middleC4Number: 56
     });
+    this.table.renderRows();
   }
 
   remove(index) {
     this.instruments.splice(index, 1);
+    this.table.renderRows();
   }
+
+  @ViewChild(MatTable) table: MatTable<DrumkitInstrument>;
 }
 
 export interface DrumkitInstrument {

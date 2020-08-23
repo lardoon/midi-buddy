@@ -5,7 +5,7 @@
   <button mat-button (click)="accordion.closeAll()">Collapse All</button> -->
 </div>
 <app-drumkit-creator></app-drumkit-creator>
-<mat-card>
+<mat-card *ngIf="midi">
   <mat-card-header>
     <mat-card-title>
     {{midi?.header?.name || fileName}}
