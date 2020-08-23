@@ -1,0 +1,41 @@
+
+<input type="file" (change)="uploadFile($event)">
+<div class="example-action-buttons">
+ <!-- <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button> -->
+</div>
+<app-drumkit-creator></app-drumkit-creator>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+    {{midi?.header?.name || fileName}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt *ngIf="midi?.header?.ppq" title="Ticks per Quarter Note">PPQ</dt>
+        <dd>
+          {{midi?.header?.ppq}}
+        </dd>
+    </dl>
+  </mat-card-content>
+</mat-card>
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel *ngFor="let track of midi?.tracks; let i = index" #p>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span [ngClass]="{'track-no-name': !track.name}">{{track.name || 'Track ' + (i + 1)}}</span>
+        
+      </mat-panel-title>
+      <mat-panel-description *ngIf="!p.expanded">
+        <mat-chip-list>
+           <mat-chip title="Channel">{{track.channel + 1}}</mat-chip>
+           <mat-chip title="Instrument Name">{{track.instrument.name | titlecase}}</mat-chip>
+           <mat-chip title="Instrument Family">{{track.instrument.family | titlecase}}</mat-chip>
+        </mat-chip-list>
+       
+        <mat-icon>{{track.instrument.name | lowercase}}</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
