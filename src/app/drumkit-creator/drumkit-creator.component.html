@@ -1,7 +1,11 @@
 <button mat-icon-button (click)="addRow()">
   <mat-icon>add</mat-icon>
 </button>
-
+<select>
+  <optgroup *ngFor="let group of presets | keyvalue" [label]="group.key">
+    <option *ngFor="let kit of group.value" [value]="kit">{{kit}}</option>
+  </optgroup>
+</select>
 <mat-table [dataSource]="instruments" class="mat-elevation-z8">
   
   <ng-container matColumnDef="name">

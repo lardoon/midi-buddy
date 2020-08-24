@@ -36,6 +36,23 @@ export class DrumkitCreatorComponent implements OnInit {
     'controls'
   ]
 
+  presets: {[key:string]:string[]} = {
+    'Premium': [
+      'Standard Pro',
+      'World Percussion',
+      'Studio Legend'
+    ],
+    'Standard': [
+      'Standard',
+      'Brushes',
+      'Percussion',
+      'Latin'
+    ],
+    'User': [
+      'Rock with Bass'
+    ]
+  }
+
   constructor() {
     this.instrumentOptions.sort();
     this.instrumentOptions.unshift('Drums');
