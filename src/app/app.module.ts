@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from "./app.component";
 
@@ -15,6 +16,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule} from '@angular/material/table';
 
 import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.component";
+import { TrackEditorComponent } from './track-editor/track-editor.component';
 
 
 
@@ -30,9 +32,10 @@ import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.compo
     MatCardModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    AppRoutingModule
   ],
-  declarations: [AppComponent, DrumkitCreatorComponent],
+  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent],
   bootstrap: [AppComponent],
   schemas: []
 })

@@ -1,3 +1,3 @@
 # midibuddy
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/midibuddy)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/midi-buddy)
