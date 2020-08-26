@@ -1,45 +1,64 @@
 <button mat-icon-button (click)="addRow()">
   <mat-icon>add</mat-icon>
 </button>
+
 <select>
   <optgroup *ngFor="let group of presets | keyvalue" [label]="group.key">
     <option *ngFor="let kit of group.value" [value]="kit">{{kit}}</option>
   </optgroup>
 </select>
 <mat-table [dataSource]="instruments" class="mat-elevation-z8">
-  
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Instrument </mat-header-cell>
-    <mat-cell *matCellDef="let instrument"> <input [title]="instrument.name" [(ngModel)]="instrument.name" > </mat-cell>
-  </ng-container>
 
-  
-  <ng-container matColumnDef="startNumber">
-    <mat-header-cell *matHeaderCellDef> Start Number </mat-header-cell>
-    <mat-cell *matCellDef="let instrument"> <input type="number" min="0" [max]="instrument.endNumber" [(ngModel)]="instrument.startNumber" > </mat-cell>
-  </ng-container>
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> Instrument </mat-header-cell>
+		<mat-cell *matCellDef="let instrument; let i = index;">
 
-  
-  <ng-container matColumnDef="endNumber">
-    <mat-header-cell *matHeaderCellDef> End Number </mat-header-cell>
-    <mat-cell *matCellDef="let instrument"> <input type="number" max="127" [min]="instrument.startNumber" [(ngModel)]="instrument.endNumber" > </mat-cell>
-  </ng-container>
+			<input matInput [title]="instrument.name" type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           
+           [formControl]="instrumentControls[i]"
+           [matAutocomplete]="auto" >
+			<mat-autocomplete #autoGroup="matAutocomplete" #auto>
+				<mat-optgroup *ngFor="let group of instrumentOptions | keyvalue" [label]="group.key">
+					<mat-option *ngFor="let name of group.value" [value]="name">
+						{{name}}
+					</mat-option>
+				</mat-optgroup>
+			</mat-autocomplete>
+		</mat-cell>
+	</ng-container>
 
-  
-  <ng-container matColumnDef="middleC4Number">
-    <mat-header-cell *matHeaderCellDef> Middle C4 </mat-header-cell>
-    <mat-cell *matCellDef="let instrument"> <input type="number" [min]="instrument.startNumber" [max]="instrument.endNumber" [(ngModel)]="instrument.middleC4Number" > </mat-cell>
-  </ng-container>
 
-    <ng-container matColumnDef="controls">
-    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-    <mat-cell *matCellDef="let instrument; let i = index;"> 
-      <button mat-icon-button (click)="remove(i)" [title]="'Remove ' + instrument.name">
+	<ng-container matColumnDef="startNumber">
+		<mat-header-cell *matHeaderCellDef> Start Number </mat-header-cell>
+		<mat-cell *matCellDef="let instrument">
+			<input type="number" min="0" [max]="instrument.endNumber" [(ngModel)]="instrument.startNumber" > </mat-cell>
+	</ng-container>
+
+
+	<ng-container matColumnDef="endNumber">
+		<mat-header-cell *matHeaderCellDef> End Number </mat-header-cell>
+		<mat-cell *matCellDef="let instrument">
+			<input type="number" max="127" [min]="instrument.startNumber" [(ngModel)]="instrument.endNumber" > </mat-cell>
+	</ng-container>
+
+
+	<ng-container matColumnDef="middleC4Number">
+		<mat-header-cell *matHeaderCellDef> Middle C4 </mat-header-cell>
+		<mat-cell *matCellDef="let instrument">
+			<input type="number" [min]="instrument.startNumber" [max]="instrument.endNumber" [(ngModel)]="instrument.middleC4Number" > </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="controls">
+		<mat-header-cell *matHeaderCellDef> </mat-header-cell>
+		<mat-cell *matCellDef="let instrument; let i = index;">
+			<button mat-icon-button (click)="remove(i)" [title]="'Remove ' + instrument.name">
         <mat-icon>remove</mat-icon>
       </button>
-    </mat-cell>
-  </ng-container>
+		</mat-cell>
+	</ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
