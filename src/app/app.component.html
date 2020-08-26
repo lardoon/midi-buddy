@@ -1,6 +1,33 @@
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/drumkit">Custom Kit</a>
-</nav>
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen>
+	<mat-sidenav #sidenav class="app-sidenav">
+		<mat-nav-list>
+      <h3 matSubheader>Midi Buddy</h3>
+			<a mat-list-item routerLink="/"><mat-icon>home</mat-icon></a>
+			<a mat-list-item routerLink="/drumkit">Custom Kit</a>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar color="primary" class="mat-elevation-z3">
+			<button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button> Midi Buddy
+			<span class="fill-spacer"></span>
+			<button mat-icon-button [matMenuTriggerFor]="moreMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+			<mat-menu #moreMenu="matMenu">
+				<button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          Settings
+        </button>
+				<button mat-menu-item>
+          <mat-icon>help</mat-icon>
+          Help
+        </button>
+			</mat-menu>
+		</mat-toolbar>
+		<router-outlet></router-outlet>
+		
+	</mat-sidenav-content>
+</mat-sidenav-container>
 
