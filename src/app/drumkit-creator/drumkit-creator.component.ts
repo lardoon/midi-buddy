@@ -12,6 +12,7 @@ import { Observable } from "rxjs";
 export class DrumkitCreatorComponent implements OnInit {
   instrumentControls: FormControl[] = [];
   instruments: DrumkitInstrument[] = [];
+  presetSelection: DrumkitInstrument[] = [];
 
   instrumentOptions = {
     Piano: [
@@ -193,10 +194,12 @@ export class DrumkitCreatorComponent implements OnInit {
     "controls"
   ];
 
-  presets: { [key: string]: string[] } = {
-    Premium: ["Standard Pro", "World Percussion", "Studio Legend"],
-    Standard: ["Standard", "Brushes", "Percussion", "Latin"],
-    User: ["Rock with Bass"]
+  presets: { [key: string]: { [key:string]:DrumkitInstrument[] } } = {
+    Premium: {"Standard Pro":[], "World Percussion":[], "Studio Legend":[]},
+    Standard: {"Standard":[], "Brushes":[], "Percussion":[], "Latin":[]},
+    User: {"2082 Hammond with Bass 60+C0":[
+      { name: 'Hammond', startNumber: 60, endNumber: 127, middleC4Number: 108}
+    ],"Rock with Bass":[]}
   };
 
   constructor() {
@@ -207,16 +210,29 @@ export class DrumkitCreatorComponent implements OnInit {
     
   }
 
+  private addFormControl(value?) : FormControl {
+    let control = new FormControl(value);
+    this.instrumentControls.push(new FormControl());
+    return control;
+  }
 
   addRow() {
-    let control = new FormControl();
-    this.instrumentControls.push(new FormControl());
+    let name = `Instrument ${this.instruments.length + 1}`;
+    let control = this.addFormControl(name);
     this.instruments.push({
-      name: `Instrument ${this.instruments.length + 1}`,
+      name: name,
       startNumber: 0,
       endNumber: 127,
       middleC4Number: 60
     });
+    this.table.renderRows();
+  }
+
+  addRowFromPreset(preset: DrumkitInstrument[]) {
+    for(let instrument  of preset) {
+      this.addFormControl(instrument.name);
+      this.instruments.push(instrument);
+    }
     this.table.renderRows();
   }
 

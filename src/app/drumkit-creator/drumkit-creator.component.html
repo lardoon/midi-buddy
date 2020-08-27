@@ -2,12 +2,12 @@
   <mat-icon>add</mat-icon> Add New Instrument
 </button>
 
-<select>
+<select [(ngModel)]="presetSelection">
   <optgroup *ngFor="let group of presets | keyvalue" [label]="group.key">
-    <option *ngFor="let kit of group.value" [value]="kit">{{kit}}</option>
+    <option *ngFor="let kit of group.value | keyvalue" [ngValue]="kit.value">{{kit.key}}</option>
   </optgroup>
 </select>
-<button mat-button><mat-icon>add</mat-icon>Add Preset</button>
+<button mat-button (click)="addRowFromPreset(presetSelection)"><mat-icon>add</mat-icon>Add Preset</button>
 <mat-table [dataSource]="instruments" >
 
 	<ng-container matColumnDef="name">
@@ -15,9 +15,8 @@
 		<mat-cell *matCellDef="let instrument; let i = index;">
 
 			<input matInput [title]="instrument.name" type="text"
-           placeholder="Pick one"
-           aria-label="Number"
            
+           aria-label="Instrument Name"
            [formControl]="instrumentControls[i]"
            [matAutocomplete]="auto" >
 			<mat-autocomplete #autoGroup="matAutocomplete" #auto>
