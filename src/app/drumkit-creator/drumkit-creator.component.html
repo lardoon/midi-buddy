@@ -1,5 +1,5 @@
-<button mat-icon-button (click)="addRow()">
-  <mat-icon>add</mat-icon>
+<button mat-button (click)="addRow()">
+  <mat-icon>add</mat-icon> Add New Instrument
 </button>
 
 <select>
@@ -7,7 +7,8 @@
     <option *ngFor="let kit of group.value" [value]="kit">{{kit}}</option>
   </optgroup>
 </select>
-<mat-table [dataSource]="instruments" class="mat-elevation-z8">
+<button mat-button><mat-icon>add</mat-icon>Add Preset</button>
+<mat-table [dataSource]="instruments" >
 
 	<ng-container matColumnDef="name">
 		<mat-header-cell *matHeaderCellDef> Instrument </mat-header-cell>
@@ -47,7 +48,7 @@
 	<ng-container matColumnDef="middleC4Number">
 		<mat-header-cell *matHeaderCellDef> Middle C4 </mat-header-cell>
 		<mat-cell *matCellDef="let instrument">
-			<input type="number" [min]="instrument.startNumber" [max]="instrument.endNumber" [(ngModel)]="instrument.middleC4Number" > </mat-cell>
+			<input type="number" [min]="-255" [max]="255" [(ngModel)]="instrument.middleC4Number" > </mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="controls">

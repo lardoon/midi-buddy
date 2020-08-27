@@ -215,7 +215,7 @@ export class DrumkitCreatorComponent implements OnInit {
       name: `Instrument ${this.instruments.length + 1}`,
       startNumber: 0,
       endNumber: 127,
-      middleC4Number: 56
+      middleC4Number: 60
     });
     this.table.renderRows();
   }
