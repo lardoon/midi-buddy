@@ -212,7 +212,7 @@ export class DrumkitCreatorComponent implements OnInit {
 
   private addFormControl(value?) : FormControl {
     let control = new FormControl(value);
-    this.instrumentControls.push(new FormControl());
+    this.instrumentControls.push(control);
     return control;
   }
 
