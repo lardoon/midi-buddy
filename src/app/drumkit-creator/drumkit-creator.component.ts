@@ -195,11 +195,37 @@ export class DrumkitCreatorComponent implements OnInit {
   ];
 
   presets: { [key: string]: { [key:string]:DrumkitInstrument[] } } = {
-    Premium: {"Standard Pro":[], "World Percussion":[], "Studio Legend":[]},
-    Standard: {"Standard":[], "Brushes":[], "Percussion":[], "Latin":[]},
     User: {"2082 Hammond with Bass 60+C0":[
-      { name: 'Hammond', startNumber: 60, endNumber: 127, middleC4Number: 108}
-    ],"Rock with Bass":[]}
+      { name: 'Bass', startNumber: 0, endNumber: 31, middleC4Number: 36},
+      {name:'Ride 2', startNumber: 59, percussion: true },
+      {name:'Cabasa', startNumber: 58, percussion: true },
+      {name:'Crash 2', startNumber: 57, percussion: true },
+      {name:'Cowbell', startNumber: 56, percussion: true },
+      {name:'Splash', startNumber: 55, percussion: true },
+      {name:'Tambourine', startNumber: 54, percussion: true },
+      {name:'Ride Bell', startNumber: 53, percussion: true },
+      {name:'China', startNumber: 52, percussion: true },
+      {name:'Ride', startNumber: 51, percussion: true },
+      {name:'High Tom', startNumber: 50, percussion: true },
+      {name:'Crash 1', startNumber: 49, percussion: true },
+      {name:'High Mid tom', startNumber: 48, percussion: true },
+      {name:'Low Mid-Tom', startNumber: 47, percussion: true },
+      {name:'Open Hi-Hat', startNumber: 46, percussion: true },
+      {name:'Low Tom', startNumber: 45, percussion: true },
+      {name:'Pedal Hi-Hat', startNumber: 44, percussion: true },
+      {name:'High Floor Tom', startNumber: 43, percussion: true },
+      {name:'Closed Hi-Hats', startNumber: 42, percussion: true },
+      {name:'Low Floor Tom', startNumber: 41, percussion: true },
+      {name:'Brush Snare', startNumber: 40, percussion: true },
+      {name:'808 Clap', startNumber: 39, percussion: true },
+      {name:'Snare', startNumber: 38, percussion: true },
+      {name:'Stick', startNumber: 37, percussion: true },
+      {name:'Kick', startNumber: 36, percussion: true },
+      {name:'808 Kick', startNumber: 35, percussion: true },
+      {name:'Snare Roll', startNumber: 34, percussion: true },
+      {name:'Claves', startNumber: 33, percussion: true },
+      { name: 'Hammond', startNumber: 60, endNumber: 127, middleC4Number: 108},
+    ]}
   };
 
   constructor() {
@@ -229,6 +255,9 @@ export class DrumkitCreatorComponent implements OnInit {
   }
 
   addRowFromPreset(preset: DrumkitInstrument[]) {
+    preset.sort((a, b) => {
+      return a.startNumber - b.startNumber;
+    })
     for(let instrument  of preset) {
       this.addFormControl(instrument.name);
       this.instruments.push(instrument);
@@ -249,6 +278,8 @@ export class DrumkitCreatorComponent implements OnInit {
 export interface DrumkitInstrument {
   name: string;
   startNumber: number;
-  endNumber: number;
-  middleC4Number: number;
+  endNumber?: number;
+  middleC4Number?: number;
+  percussion?: boolean;
 }
+
