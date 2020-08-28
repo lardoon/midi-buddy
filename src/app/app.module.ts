@@ -22,6 +22,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.component";
 import { TrackEditorComponent } from './track-editor/track-editor.component';
 import { MatInputModule } from "@angular/material/input";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 
 
@@ -45,7 +46,9 @@ import { MatInputModule } from "@angular/material/input";
     MatSidenavModule,
     MatMenuModule,
     MatToolbarModule,
-    MatInputModule,ReactiveFormsModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent],
   bootstrap: [AppComponent],

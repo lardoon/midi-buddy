@@ -191,6 +191,7 @@ export class DrumkitCreatorComponent implements OnInit {
     "startNumber",
     "endNumber",
     "middleC4Number",
+    "percussion",
     "controls"
   ];
 
