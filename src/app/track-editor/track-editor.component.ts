@@ -24,7 +24,7 @@ export class TrackEditorComponent implements OnInit {
   findInstrument(instrument: string) {
     let i = this.kitSelection.find((i) => instrument.toLocaleLowerCase() === i.toLocaleLowerCase());
     console.log(i)
-    return i;
+    return  i ;
   }
 
   constructor() { }
