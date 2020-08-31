@@ -1,7 +1,6 @@
 <input type="file" (change)="uploadFile($event)">
 <div class="example-action-buttons">
-	<!-- <button mat-button (click)="accordion.openAll()">Expand All</button>
-  <button mat-button (click)="accordion.closeAll()">Collapse All</button> -->
+	<app-options></app-options>
 </div>
 <mat-card *ngIf="midi">
 	<mat-card-header>

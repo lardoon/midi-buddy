@@ -23,6 +23,7 @@ import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.compo
 import { TrackEditorComponent } from './track-editor/track-editor.component';
 import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { OptionsComponent } from './options/options.component';
 
 
 
@@ -50,7 +51,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     ReactiveFormsModule,
     MatCheckboxModule
   ],
-  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent],
+  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, OptionsComponent],
   bootstrap: [AppComponent],
   schemas: []
 })
