@@ -1,60 +1,66 @@
 <mat-horizontal-stepper [linear]="false" #stepper>
-  <mat-step>
-    <ng-template matStepLabel>Upload file</ng-template>
-     <div>
-        <button mat-button matStepperNext [disabled]="!file.value">Next</button>
-      </div>
-    <form>
-      <input #file type="file" (change)="uploadFile($event);stepper.next()">
+	<mat-step>
+		<ng-template matStepLabel>Upload file</ng-template>
+		<div>
+			<button mat-button matStepperNext [disabled]="!file.value">Next</button>
+		</div>
+		<form>
+			<input #file type="file" (change)="uploadFile($event);stepper.next()">
     </form>
 
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Edit tracks</ng-template>
-    <div>
-        <button mat-button matStepperPrevious>Previous</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-<div class="example-action-buttons">
-	<app-options></app-options>
-</div>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel>Edit tracks</ng-template>
+		<div>
+			<button mat-button matStepperPrevious>Previous</button>
+			<button mat-button matStepperNext>Next</button>
+		</div>
+		<div class="example-action-buttons">
+			<app-options></app-options>
+			<select #kitSelector [(ngModel)]="kitSelection">
+    <optgroup *ngFor="let kitGroup of presets | keyvalue" [label]="kitGroup.key">
+      <option *ngFor="let kit of kitGroup.value | keyvalue" [ngValue]="kit.value">{{kit.key}}</option>
+    </optgroup>
+  </select>
+		</div>
 
-<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
+		<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
 
-	<ng-container matColumnDef="name">
-		<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-		<mat-cell [ngClass]="{'track-no-name': !track.name}" *matCellDef="let track; let i = index"> {{track.name || 'Track ' + (i + 1)}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+				<mat-cell [ngClass]="{'track-no-name': !track.name}" *matCellDef="let track; let i = index">
+					{{track.name || 'Track ' + (i + 1)}} </mat-cell>
+			</ng-container>
 
-	<ng-container matColumnDef="channel">
-		<mat-header-cell *matHeaderCellDef> Channel </mat-header-cell>
-		<mat-cell *matCellDef="let track"> {{track.channel + 1}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="channel">
+				<mat-header-cell *matHeaderCellDef> Channel </mat-header-cell>
+				<mat-cell *matCellDef="let track"> {{track.channel + 1}} </mat-cell>
+			</ng-container>
 
-	<ng-container matColumnDef="instrument">
-		<mat-header-cell *matHeaderCellDef> Instrument </mat-header-cell>
-		<mat-cell *matCellDef="let track"> {{track.instrument.name | titlecase}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="instrument">
+				<mat-header-cell *matHeaderCellDef> Instrument </mat-header-cell>
+				<mat-cell *matCellDef="let track"> {{track.instrument.name | titlecase}} </mat-cell>
+			</ng-container>
 
-	<ng-container matColumnDef="family">
-		<mat-header-cell *matHeaderCellDef> Family </mat-header-cell>
-		<mat-cell *matCellDef="let track"> {{track.instrument.family | titlecase}} </mat-cell>
-	</ng-container>
+			<ng-container matColumnDef="family">
+				<mat-header-cell *matHeaderCellDef> Family </mat-header-cell>
+				<mat-cell *matCellDef="let track"> {{track.instrument.family | titlecase}} </mat-cell>
+			</ng-container>
 
-  	<ng-container matColumnDef="kitInstrument">
-		<mat-header-cell *matHeaderCellDef> Kit Instrument Selection </mat-header-cell>
-		<mat-cell *matCellDef="let track"> 
-      <select>
+			<ng-container matColumnDef="kitInstrument">
+				<mat-header-cell *matHeaderCellDef> Kit Instrument Selection </mat-header-cell>
+				<mat-cell *matCellDef="let track">
+					<select >
         <option></option>
-        <option *ngFor="let kitInstrument of ['Drums','Bass','Organ']" [value]="kitInstrument">{{kitInstrument}}</option>
+        <option *ngFor="let kitInstrument of kitSelection" [value]="kitInstrument" [selected]="findInstrument(track.instrument.family)">{{kitInstrument}}</option>
       </select> </mat-cell>
-	</ng-container>
+			</ng-container>
 
-	<mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
-</mat-table>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Export Midi</ng-template>
-  </mat-step>
+			<mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+		</mat-table>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel>Export Midi</ng-template>
+	</mat-step>
 </mat-horizontal-stepper>

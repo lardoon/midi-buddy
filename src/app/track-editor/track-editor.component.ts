@@ -10,6 +10,21 @@ export class TrackEditorComponent implements OnInit {
 
   displayColumns = ['name', 'channel', 'instrument', 'family', 'kitInstrument'];
 
+  presets:{[key:string]: {[key:string]:string[]}} = {
+    'Standard': {'Standard':['Drums'], 'Brushes':['Drums']},
+    'Premium': {'Standard Pro':['Drums'], 'Studio Legend':['Drums']},
+    'User': {'Rock with Bass':['Bass','Drums']},
+    'Custom':{}
+  }
+
+  kitSelection: string[];
+
+  findInstrument(instrument: string) {
+    let i = this.kitSelection.find((i) => instrument.toLocaleLowerCase() === i.toLocaleLowerCase());
+    console.log(i)
+    return i;
+  }
+
   constructor() { }
 
   ngOnInit() {
