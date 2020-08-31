@@ -8,7 +8,7 @@ import { Midi } from '@tonejs/midi';
 })
 export class TrackEditorComponent implements OnInit {
 
-  displayColumns = ['name', 'channel', 'instrument', 'family'];
+  displayColumns = ['name', 'channel', 'instrument', 'family', 'kitInstrument'];
 
   constructor() { }
 
