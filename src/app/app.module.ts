@@ -24,6 +24,7 @@ import { TrackEditorComponent } from './track-editor/track-editor.component';
 import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { OptionsComponent } from './options/options.component';
+import { MatStepperModule } from "@angular/material/stepper";
 
 
 
@@ -49,7 +50,8 @@ import { OptionsComponent } from './options/options.component';
     MatToolbarModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatStepperModule
   ],
   declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, OptionsComponent],
   bootstrap: [AppComponent],
