@@ -49,8 +49,8 @@
 
 			<ng-container matColumnDef="kitInstrument">
 				<mat-header-cell *matHeaderCellDef> Kit Instrument Selection </mat-header-cell>
-				<mat-cell *matCellDef="let track">
-					<select >
+				<mat-cell *matCellDef="let track; let i = index">
+					<select [formControl]="instrumentSelection[i]">
         <option></option>
         <option *ngFor="let kitInstrument of kitSelection" [value]="kitInstrument" [selected]="findInstrument(track.instrument.family)">{{kitInstrument}}</option>
       </select> </mat-cell>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Midi } from '@tonejs/midi';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-track-editor',
@@ -18,6 +19,7 @@ export class TrackEditorComponent implements OnInit {
   }
 
   kitSelection: string[];
+  instrumentSelection: FormControl[] = [];
 
   findInstrument(instrument: string) {
     let i = this.kitSelection.find((i) => instrument.toLocaleLowerCase() === i.toLocaleLowerCase());
@@ -36,10 +38,11 @@ export class TrackEditorComponent implements OnInit {
     async uploadFile(event) {
       let file = event.target.files[0];
       this.fileName = file.name;
-      this.midi = await this.loadFile(file);
-      for(let sig of this.midi.header.timeSignatures) {
-
+      let midi = await this.loadFile(file);
+      for(let i = 0; i < midi.tracks.length; i++) {
+        this.instrumentSelection.push(new FormControl());
       }
+      this.midi = midi;
     }
 
     loadFile(file : Blob) : Promise<Midi> {
