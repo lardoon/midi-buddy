@@ -27,6 +27,15 @@ export class TrackEditorComponent implements OnInit {
     return  i ;
   }
 
+  presetInstrumentSelection() {
+    for(let i = 0; i < this.midi.tracks.length; i++) {
+        let track = this.midi.tracks[i];
+        let instrument = this.findInstrument(track.instrument.family);
+        if(instrument)
+          this.instrumentSelection[i].setValue(instrument);
+      }
+  }
+
   constructor() { }
 
   ngOnInit() {

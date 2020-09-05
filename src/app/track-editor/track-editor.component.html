@@ -17,7 +17,7 @@
 		</div>
 		<div class="example-action-buttons">
 			<app-options></app-options>
-			<select #kitSelector [(ngModel)]="kitSelection">
+			<select #kitSelector [(ngModel)]="kitSelection" (change)="presetInstrumentSelection()">
     <optgroup *ngFor="let kitGroup of presets | keyvalue" [label]="kitGroup.key">
       <option *ngFor="let kit of kitGroup.value | keyvalue" [ngValue]="kit.value">{{kit.key}}</option>
     </optgroup>
@@ -50,7 +50,7 @@
 			<ng-container matColumnDef="kitInstrument">
 				<mat-header-cell *matHeaderCellDef> Kit Instrument Selection </mat-header-cell>
 				<mat-cell *matCellDef="let track; let i = index">
-					<select [value]="'Drums'" [formControl]="instrumentSelection[i]">
+					<select [formControl]="instrumentSelection[i]">
         <option></option>
         <option *ngFor="let kitInstrument of kitSelection" [value]="kitInstrument" >{{kitInstrument}}</option>
       </select> </mat-cell>
