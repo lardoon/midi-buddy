@@ -22,7 +22,7 @@ export class TrackEditorComponent implements OnInit {
   instrumentSelection: FormControl[] = [];
 
   findInstrument(instrument: string) {
-    let i = this.kitSelection.find((i) => instrument.toLocaleLowerCase() === i.toLocaleLowerCase());
+    let i = this.kitSelection.find((i) => (instrument || "").toLocaleLowerCase() === i.toLocaleLowerCase());
     console.log(i)
     return  i ;
   }
@@ -31,8 +31,23 @@ export class TrackEditorComponent implements OnInit {
     for(let i = 0; i < this.midi.tracks.length; i++) {
         let track = this.midi.tracks[i];
         let instrument = this.findInstrument(track.instrument.family);
+        if(instrument && !this.findInstrument(this.instrumentSelection[i].value))
+          this.instrumentSelection[i].setValue(instrument);
+      }
+  }
+
+  resetPresetInstruments() {
+    for(let i = 0; i < this.midi.tracks.length; i++) {
+        let track = this.midi.tracks[i];
+        let instrument = this.findInstrument(track.instrument.family);
         if(instrument)
           this.instrumentSelection[i].setValue(instrument);
+      }
+  }
+
+  clearPresetInstruments() {
+    for(let i = 0; i < this.midi.tracks.length; i++) {
+        this.instrumentSelection[i].setValue(null);
       }
   }
 
