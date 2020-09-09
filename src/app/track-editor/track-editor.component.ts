@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 import { FormControl } from '@angular/forms';
+import { Note } from '@tonejs/midi/dist/Note';
+import { Track } from '@tonejs/midi/dist/Track';
 
 @Component({
   selector: 'app-track-editor',
@@ -49,6 +51,33 @@ export class TrackEditorComponent implements OnInit {
     for(let i = 0; i < this.midi.tracks.length; i++) {
         this.instrumentSelection[i].setValue(null);
       }
+  }
+
+  export() {
+    const MIDDLE_C4 = 56;
+    const instrumentMiddleC4 = {
+      Bass: 36,
+      Drums: 56
+    };
+    let exportMidi = new Midi();
+    exportMidi.header = this.midi.header;
+    let exportTrack = exportMidi.addTrack();
+    exportTrack.channel = 10;
+    for(let i = 0; i < this.midi.tracks.length; i++) {
+      let track = this.midi.tracks[i];
+      let instrument = this.instrumentSelection[i].value;
+      if(instrument) {
+        
+        for(let note of track.notes) {
+          exportTrack.addNote({
+            midi: (note.midi - MIDDLE_C4) + instrumentMiddleC4[instrument],
+            duration: note.duration,
+            time: note.time
+          });
+        }
+      }
+    }
+    console.log(exportMidi.toJSON())
   }
 
   constructor() { }
