@@ -55,7 +55,7 @@ export class TrackEditorComponent implements OnInit {
 
   export() {
     const MIDDLE_C4 = 56;
-    const instrumentMiddleC4 = {
+    const instrumentMiddleC4:{[key:string]:number} = {
       Bass: 36,
       Drums: 56
     };
