@@ -62,7 +62,7 @@ export class TrackEditorComponent implements OnInit {
     let exportMidi = new Midi();
     exportMidi.header = this.midi.header;
     let exportTrack = exportMidi.addTrack();
-    exportTrack.channel = 10;
+    exportTrack.channel = 9;
     for(let i = 0; i < this.midi.tracks.length; i++) {
       let track = this.midi.tracks[i];
       let instrument = this.instrumentSelection[i].value;
@@ -77,8 +77,14 @@ export class TrackEditorComponent implements OnInit {
         }
       }
     }
-    console.log(this.midi.toJSON())
-    console.log(exportMidi.toJSON())
+    let blob = new Blob([exportMidi.toArray()])
+    const anchor = window.document.createElement('a');
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.download = "export.mid";
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+    window.URL.revokeObjectURL(anchor.href);
   }
 
   constructor() { }
