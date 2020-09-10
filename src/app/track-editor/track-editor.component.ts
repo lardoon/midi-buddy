@@ -77,6 +77,7 @@ export class TrackEditorComponent implements OnInit {
         }
       }
     }
+    console.log(this.midi.toJSON())
     console.log(exportMidi.toJSON())
   }
 
