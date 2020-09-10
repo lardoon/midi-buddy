@@ -25,7 +25,7 @@
   </select>
   <button mat-button (click)="resetPresetInstruments()"><mat-icon>refresh</mat-icon>Reset</button>
   <button mat-button (click)="clearPresetInstruments()"><mat-icon>clear</mat-icon>Clear</button>
-  <button mat-button (click)="export()"><mat-icon>get_app</mat-icon>Export</button>
+
 		</div>
 
 		<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
@@ -66,5 +66,6 @@
 	</mat-step>
 	<mat-step>
 		<ng-template matStepLabel>Export Midi</ng-template>
+    <app-export [midi]="midi" [instrumentSelection]="instrumentSelection"></app-export>
 	</mat-step>
 </mat-horizontal-stepper>

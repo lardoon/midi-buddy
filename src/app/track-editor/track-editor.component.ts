@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 import { FormControl } from '@angular/forms';
-import { Note } from '@tonejs/midi/dist/Note';
-import { Track } from '@tonejs/midi/dist/Track';
+
 
 @Component({
   selector: 'app-track-editor',
@@ -21,6 +20,8 @@ export class TrackEditorComponent implements OnInit {
   }
 
   kitSelection: string[];
+  
+  @Output()
   instrumentSelection: FormControl[] = [];
 
   findInstrument(instrument: string) {
@@ -53,45 +54,14 @@ export class TrackEditorComponent implements OnInit {
       }
   }
 
-  export() {
-    const MIDDLE_C4 = 56;
-    const instrumentMiddleC4:{[key:string]:number} = {
-      Bass: 36,
-      Drums: 56
-    };
-    let exportMidi = new Midi();
-    exportMidi.header = this.midi.header;
-    let exportTrack = exportMidi.addTrack();
-    exportTrack.channel = 9;
-    for(let i = 0; i < this.midi.tracks.length; i++) {
-      let track = this.midi.tracks[i];
-      let instrument = this.instrumentSelection[i].value;
-      if(instrument) {
-        
-        for(let note of track.notes) {
-          exportTrack.addNote({
-            midi: (note.midi - MIDDLE_C4) + instrumentMiddleC4[instrument],
-            duration: note.duration,
-            time: note.time
-          });
-        }
-      }
-    }
-    let blob = new Blob([exportMidi.toArray()])
-    const anchor = window.document.createElement('a');
-    anchor.href = window.URL.createObjectURL(blob);
-    anchor.download = "export.mid";
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    window.URL.revokeObjectURL(anchor.href);
-  }
+
 
   constructor() { }
 
   ngOnInit() {
   }
 
+    @Output()
     midi: Midi;
     fileName: string;
     
