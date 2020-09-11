@@ -6,52 +6,107 @@ export class KitService {
   constructor() { }
 
 
-  kits: {[key:string]:{[key:string]:  KitInstrument
-  }} = {
-    "Standard": {
-      "Drums": {
-        startNumber: 1,
-        endNumber: 82,
-        notes: {
-          'Shaker': { number: 82, type: 'shaker' },
-          'Splash 2': { number: 59, type: 'splash', variant: 2 },
-          'Crash Cymbal 2': { number: 57, type: 'crash', variant: 2 },
-          'Cowbell': { number: 56, type: 'cowbell' },
-          'Splash 1': { number: 55, type: 'splash', variant: 1 },
-          'Tambourine': { number: 54, type: 'tambourine' },
-          'Ride C. Bell': { number: 53, type: 'ride' },
-          'Ride Cymbal': { number: 51, type: 'ride' },
-          'Tom 1': { number: 50, type: 'tom', variant: 1 },
-          'Crash Cymbal 1': { number: 49, type: 'crash', variant: 1 },
-          'Tom 2': { number: 48, type: 'tom', variant: 2 },
-          'Hi-Hat Open': { number: 46, type: 'hat' },
-          'Tom 3': { number: 45, type: 'tom', variant: 3 },
-          'Foot Hi-Hat': { number: 44, type: 'hat' },
-          'Tom 4': { number: 43, type: 'tom', variant: 4 },
-          'Hi-Hats Closed': { number: 42, type: 'hat' },
-          'Handclaps': { number: 39, type: 'clap' },
-          'New Snare': { number: 38, type: 'snare', variant: 1 },
-          'Cross Stick': { number: 37, type: 'stick' },
-          'Kick Drum': { number: 36, type: 'kick' },
-          'Metronome': { number: 33, type: 'metronome' },
-          'Snare': { number: 1, type: 'snare', variant: 2 },
-        }
+  kits: {
+    [key:string]: {
+      [key:string]:{
+        [key:string]: Instrument | Drums
       }
     }
+  } = {
+    "Default": {
+      "Standard": {
+        "Drums": {
+          
+            'Shaker': { number: [82] },
+            'Splash 2': { number: [59]  },
+            'Crash Cymbal 2': { number: [57] },
+            'Cowbell': { number: [56] },
+            'Splash 1': { number: [55] },
+            'Tambourine': { number: [54] },
+            'Ride C. Bell': { number: [53] },
+            'Ride Cymbal': { number: [51] },
+            'Tom 1': { number: [50] },
+            'Crash Cymbal 1': { number: [49] },
+            'Tom 2': { number: [48] },
+            'Hi-Hat Open': { number: [46] },
+            'Tom 3': { number: [45] },
+            'Foot Hi-Hat': { number: [44] },
+            'Tom 4': { number: [43] },
+            'Hi-Hats Closed': { number: [42] },
+            'Handclaps': { number: [39] },
+            'New Snare': { number: [38] },
+            'Cross Stick': { number: [37] },
+            'Kick Drum': { number: [36] },
+            'Metronome': { number: [33] },
+            'Snare': { number: [1] },
+          
+        }
+      }
+    },
+      "User": {
+        "Standard P Bass": {
+          "Bass": {
+            startNumber: 87, endNumber: 115, middleC4: 120
+          },
+          "Drums": {
+            'Bell': { number: [81] },
+            'Low Block': { number: [77] },
+            'Jam Block': { number: [76] },
+            'Clave': { number: [75] },
+            'Long Guiro': { number: [74] },
+            'Short Guiro': { number: [73] },
+            'Shaker': { number: [70] },
+            'Cabasa': { number: [69] },
+            'Lo Agogo': { number: [68] },
+            'Hi Agogo': { number: [67] },
+            'Timbale Low': { number: [66] },
+            'Timbale High': { number: [65] },
+            'Low Conga': { number: [64] },
+            'Open High Conga': { number: [63] },
+            'Low Bongo': { number: [61] },
+            'Hi Bongo': { number: [60] },
+            'Splash 2': { number: [59] },
+            'Crash 2': { number: [57] },
+            'Cowbell': { number: [56] },
+            'Splash 1': { number: [55] },
+            'Tambourine': { number: [54] },
+            'Ride Bell': { number: [53] },
+            'China': { number: [52] },
+            'Ride': { number: [51] },
+            'Tom 1': { number: [50] },
+            'Crash 1': { number: [49] },
+            'Tom 2': { number: [48] },
+            'Hi-Hat Open': { number: [46] },
+            'Tom 3': { number: [45] },
+            'Foot Hi-Hat': { number: [44] },
+            'Tom 4': { number: [43] },
+            'Hi-Hats Closed': { number: [42] },
+            'Snare Alt': { number: [40] },
+            'Handclaps': { number: [39] },
+            'Snare': { number: [38] },
+            '37 Cross Sticks': { number: [37] },
+            'Kick': { number: [36] },
+            'Kick alt': { number: [35] },
+            'Metronome': { number: [33] },
+          }
+        }
+      }
   }
+  
 
 }
 
-export interface KitInstrument {
+export interface Drums {
+  [key:string]: Drum
+}
+
+export interface Drum {
+  number: number[];
+}
+
+export interface Instrument {
   startNumber: number;
   endNumber?: number;
   middleC4?: number;
-  notes: { [key: string] : KitNote }
 }
 
-export interface KitNote {
-  number: number;
-  midiNumber?: number;
-  type?: string;
-  variant?: number;
-}
