@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class KitService {
@@ -9,12 +9,15 @@ export class KitService {
   kits: {
     [key:string]: {
       [key:string]:{
-        [key:string]: Instrument | Drums
+        [key:string]: Instrument | Drums | NoteMap
       }
     }
   } = {
     "Default": {
       "Standard": {
+        "NoteMap": {
+          35: 36
+        },
         "Drums": {
           
             'Shaker': { number: [82] },
@@ -94,6 +97,10 @@ export class KitService {
   }
   
 
+}
+
+export interface NoteMap {
+  [key:number]: number;
 }
 
 export interface Drums {
