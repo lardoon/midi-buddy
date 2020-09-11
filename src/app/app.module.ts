@@ -26,6 +26,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { OptionsComponent } from './options/options.component';
 import { MatStepperModule } from "@angular/material/stepper";
 import { ExportComponent } from './export/export.component';
+import { KitService } from './kit.service';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ExportComponent } from './export/export.component';
   ],
   declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, OptionsComponent, ExportComponent],
   bootstrap: [AppComponent],
-  schemas: []
+  schemas: [],
+  providers: [KitService]
 })
 export class AppModule {}
