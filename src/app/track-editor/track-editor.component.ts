@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 import { FormControl } from '@angular/forms';
+import { KitService } from '../kit.service';
 
 
 @Component({
@@ -12,20 +13,16 @@ export class TrackEditorComponent implements OnInit {
 
   displayColumns = ['name', 'channel', 'instrument', 'family', 'kitInstrument'];
 
-  presets:{[key:string]: {[key:string]:string[]}} = {
-    'Standard': {'Standard':['Drums'], 'Brushes':['Drums']},
-    'Premium': {'Standard Pro':['Drums'], 'Studio Legend':['Drums']},
-    'User': {'Rock with Bass':['Bass','Drums']},
-    'Custom':{}
-  }
+  presets:{[key:string]: {[key:string]:string[]}} = {  }
 
-  kitSelection: string[];
+  @Output()
+  kitSelection: string;
   
   @Output()
   instrumentSelection: FormControl[] = [];
 
   findInstrument(instrument: string) {
-    let i = this.kitSelection.find((i) => (instrument || "").toLocaleLowerCase() === i.toLocaleLowerCase());
+    let i = this.getKitInstruments().find((i) => (instrument || "").toLocaleLowerCase() === i.toLocaleLowerCase());
     console.log(i)
     return  i ;
   }
@@ -56,7 +53,15 @@ export class TrackEditorComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private kitService: KitService) { 
+    this.presets = kitService.categories;
+  }
+
+  getKitInstruments(): string[] {
+    if(!this.kitSelection)
+      return [];
+    return Object.keys(this.kitService.kits[this.kitSelection]).filter(k => k !== 'Map');
+  }
 
   ngOnInit() {
   }
@@ -72,7 +77,11 @@ export class TrackEditorComponent implements OnInit {
       for(let i = 0; i < midi.tracks.length; i++) {
         this.instrumentSelection.push(new FormControl());
       }
+      if(!midi.name) {
+        midi.name = this.fileName.replace(/\.midi?$/i, '');
+      }
       this.midi = midi;
+      
     }
 
     loadFile(file : Blob) : Promise<Midi> {
