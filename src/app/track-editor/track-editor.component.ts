@@ -21,6 +21,15 @@ export class TrackEditorComponent implements OnInit {
   @Output()
   instrumentSelection: FormControl[] = [];
 
+  @Output()
+  transpose: number = 0;
+
+  @Output()
+  moveDrums: boolean;
+
+  @Output()
+  moveNotes: boolean;
+
   findInstrument(instrument: string) {
     let i = this.getKitInstruments().find((i) => (instrument || "").toLocaleLowerCase() === i.toLocaleLowerCase());
     return  i ;

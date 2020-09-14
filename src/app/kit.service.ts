@@ -12,6 +12,7 @@ export class KitService {
       Standard: ["Drums"]
     },
     User: {
+      "Rock with Bass": ["Drums", "Bass"],
       "Standard P Bass": ["Drums", "Bass"]
     }
   };
@@ -127,7 +128,32 @@ export class KitService {
         1: "Snare"
       }
     },
-
+    "Rock with Bass": {
+      Map: {
+        40: 38
+      },
+      Bass: {
+        start: 64,
+        end: 88,
+        middleC4: 108
+      },
+      Drums: {
+        53: "Ride Bell",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash 1",
+        48: "Tom 2",
+        46: "Hi-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hi-Hats Closed",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+      }
+    },
     "Standard P Bass": {
       "Map": {
         82: 70, // shaker

@@ -30,6 +30,15 @@ export class ExportComponent implements OnInit {
 
   fileName: string;
 
+  @Input()
+  moveUnsupportedNotes: boolean;
+
+  @Input()
+  moveUnsupportedDrums: boolean;
+
+  @Input()
+  transpose: number;
+
   constructor(private kitService: KitService) { }
 
   ngOnInit() {
@@ -39,10 +48,8 @@ export class ExportComponent implements OnInit {
   export() {
     let kit = this.kitService.kits[this.kitSelection];
     const MIDDLE_C4 = 56;
-    const instrumentMiddleC4:{[key:string]:number} = {
-      Bass: 36,
-      Drums: 56
-    };
+    const OCTAVE = 12;
+    
     let exportMidi = new Midi();
     exportMidi.header = this.midi.header;
     let exportTrack = exportMidi.addTrack();
@@ -54,13 +61,23 @@ export class ExportComponent implements OnInit {
         let instrument = kit[instrumentName];
         for(let note of track.notes) {
           let midiNo = note.midi;
-          if(instrument === "Drums" && kit.Map) {
+          if(instrumentName === "Drums" && kit.Map && this.moveUnsupportedDrums) {
             if(midiNo in kit.Map) {
               midiNo = kit.Map[midiNo];
             }
-          } else {
-            let inst = <Instrument> instrument;
-            midiNo = (midiNo - MIDDLE_C4) + inst.middleC4;
+          } else if(instrumentName !== "Drums") {
+            let inst =  instrument as Instrument;
+            midiNo = (inst.middleC4 - (MIDDLE_C4 - midiNo))  + this.transpose ;
+            if(this.moveUnsupportedNotes && (midiNo > inst.start || midiNo < inst.end) && (inst.end - inst.start >= OCTAVE)) {
+              let m = midiNo;
+              while(m < inst.start) {
+                m += OCTAVE;
+              }
+              while(m > inst.end) {
+                m -= OCTAVE;
+              }
+              midiNo = m;
+            }
           }
           exportTrack.addNote({
             midi: midiNo,
@@ -85,7 +102,7 @@ export class ExportComponent implements OnInit {
   createMidiFileName(): string {
     if(!this.midi)
       return null;
-    return `${this.midi.name || 'export'} (${this.instrumentSelection.filter(i => i.value).map(i => i.value).filter((x, i, a) => a.indexOf(x) == i).join(', ')}).mid`;
+    return `${this.midi.name || 'export'} (${this.instrumentSelection.filter(i => i.value).map(i => i.value).filter((x, i, a) => a.indexOf(x) == i).join('  ')}).mid`.replace(',',' ');
   }
 
   isDisabled() : boolean {

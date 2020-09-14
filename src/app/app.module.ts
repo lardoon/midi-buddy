@@ -23,7 +23,6 @@ import { DrumkitCreatorComponent } from "./drumkit-creator/drumkit-creator.compo
 import { TrackEditorComponent } from './track-editor/track-editor.component';
 import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { OptionsComponent } from './options/options.component';
 import { MatStepperModule } from "@angular/material/stepper";
 import { ExportComponent } from './export/export.component';
 import { KitService } from './kit.service';
@@ -52,7 +51,7 @@ import { KitService } from './kit.service';
     MatCheckboxModule,
     MatStepperModule
   ],
-  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, OptionsComponent, ExportComponent],
+  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, ExportComponent],
   bootstrap: [AppComponent],
   schemas: [],
   providers: [KitService]
