@@ -30,6 +30,9 @@ export class TrackEditorComponent implements OnInit {
   @Output()
   moveNotes: boolean;
 
+  @Output()
+  remove0VelocityNotes: boolean;
+
   findInstrument(instrument: string) {
     let i = this.getKitInstruments().find((i) => (instrument || "").toLocaleLowerCase() === i.toLocaleLowerCase());
     return  i ;

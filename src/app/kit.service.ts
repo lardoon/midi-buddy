@@ -13,7 +13,9 @@ export class KitService {
     },
     User: {
       "Rock with Bass": ["Drums", "Bass"],
-      "Standard P Bass": ["Drums", "Bass"]
+      "Standard P Bass": ["Drums", "Bass"],
+      "2082 Hammond with Bass 60+C0": ["Drums", "Bass", "Organ"],
+      "Sub-Std Pro PL Bass 0-31": ["Drums", "Bass"]
     }
   };
 
@@ -101,7 +103,7 @@ export class KitService {
         47: 45, // mid tom
         40: 38, // snare
         41: 43, // low tom
-        52: 55  // china cymbal
+        52: 55 // china cymbal
       },
       Drums: {
         82: "Shaker",
@@ -151,16 +153,16 @@ export class KitService {
         39: "Handclaps",
         38: "Snare",
         37: "Cross Stick",
-        36: "Kick Drum",
+        36: "Kick Drum"
       }
     },
     "Standard P Bass": {
-      "Map": {
+      Map: {
         82: 70, // shaker
         34: 33, // metronome
         41: 43, // tow tom
         47: 45, // mid tom
-        62: 63, // conga
+        62: 63 // conga
       },
       Bass: {
         start: 87,
@@ -206,6 +208,102 @@ export class KitService {
         37: "Cross Sticks",
         36: "Kick",
         35: "Kick alt",
+        33: "Metronome"
+      }
+    },
+    "2082 Hammond with Bass 60+C0": {
+      Organ: {
+        start: 60,
+        end: 127,
+        middleC4: 108
+      },
+      Bass: {
+        start: 0,
+        end: 31,
+        middleC4: 36
+      },
+      Drums: {
+        59: "Ride 2",
+        58: "Cabasa",
+        57: "Crash 2",
+        56: "Cowbell",
+        55: "Splash",
+        54: "Tambourine",
+        53: "Ride Bell",
+        52: "China",
+        51: "Ride",
+        50: "High Tom",
+        49: "Crash 1",
+        48: "High Mid tom",
+        47: "Low Mid-Tom",
+        46: "Open Hi-Hat",
+        45: "Low Tom",
+        44: "Pedal Hi-Hat",
+        43: "High Floor Tom",
+        42: "Closed Hi-Hats",
+        41: "Low Floor Tom",
+        40: "Brush Snare",
+        39: "808 Clap",
+        38: "Snare",
+        37: "Stick",
+        36: "Kick",
+        35: "808 Kick",
+        34: "Snare Roll",
+        33: "Claves"
+      }
+    },
+    "Sub-Std Pro PL Bass 0-31": {
+      Bass: {
+        start: 0,
+        end: 31,
+        middleC4: 36
+      },
+      Drums: {
+        82: "Shaker",
+        81: "Open Triangle",
+        80: "Mute Triangle",
+        79: "Open Cuica",
+        78: "Mute Cuica",
+        77: "Low Woodblock",
+        76: "Hi Woodblock",
+        75: "Clave",
+        74: "Long Guiro",
+        73: "Short Guiro",
+        72: "Long Whistle",
+        71: "Short Whistle",
+        70: "Maracas",
+        69: "Cabasa",
+        68: "Agogo Low",
+        67: "High Agogo",
+        66: "Low Timbale",
+        65: "High Timbale",
+        64: "Low Conga",
+        63: "Open High Conga",
+        62: "Hi Conga Mute",
+        61: "Low Bongo",
+        60: "Hi Bongo",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        52: "China Cymbal",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "Hi-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hi-Hats Closed",
+        40: "Electronic Snare",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+        35: "Acoustic Kick",
         33: "Metronome"
       }
     }

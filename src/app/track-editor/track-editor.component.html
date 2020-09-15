@@ -22,6 +22,9 @@
 			<div>
 				<mat-checkbox [(ngModel)]="moveDrums">Move unsupported drums to closest equivalent (tom 4 to tom 3 etc)</mat-checkbox>
 			</div>
+      <!-- div>
+				<mat-checkbox [(ngModel)]="remove0VelocityNotes">Remove 0 velocity notes</mat-checkbox>
+			</div -->
 			<div>Transpose <input [(ngModel)]="transpose" max="12" min="-12" type="number" value="0"></div>
 				<select #kitSelector [(ngModel)]="kitSelection" (change)="presetInstrumentSelection()">
     <optgroup *ngFor="let kitGroup of presets | keyvalue" [label]="kitGroup.key">
@@ -72,7 +75,7 @@
 	</mat-step>
 	<mat-step>
 		<ng-template matStepLabel>Export Midi</ng-template>
-		<app-export [transpose]="transpose" [moveUnsupportedNotes]="moveNotes" [moveUnsupportedDrums]="moveDrums" [midi]="midi" [kitSelection]="kitSelection" [instrumentSelection]="instrumentSelection">
+		<app-export [transpose]="transpose" [moveUnsupportedNotes]="moveNotes" [moveUnsupportedDrums]="moveDrums" [midi]="midi" [remove0VelocityNotes]="remove0VelocityNotes" [kitSelection]="kitSelection" [instrumentSelection]="instrumentSelection">
 		</app-export>
 	</mat-step>
 </mat-horizontal-stepper>

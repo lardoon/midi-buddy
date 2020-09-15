@@ -39,6 +39,9 @@ export class ExportComponent implements OnInit {
   @Input()
   transpose: number;
 
+  @Input()
+  remove0VelocityNotes: boolean;
+
   constructor(private kitService: KitService) { }
 
   ngOnInit() {
@@ -47,7 +50,7 @@ export class ExportComponent implements OnInit {
 
   export() {
     let kit = this.kitService.kits[this.kitSelection];
-    const MIDDLE_C4 = 56;
+    const MIDDLE_C4 = 60;
     const OCTAVE = 12;
     
     let exportMidi = new Midi();
@@ -60,6 +63,8 @@ export class ExportComponent implements OnInit {
       if(instrumentName) {
         let instrument = kit[instrumentName];
         for(let note of track.notes) {
+          if(this.remove0VelocityNotes && note.velocity === 0)
+            continue;
           let midiNo = note.midi;
           if(instrumentName === "Drums" && kit.Map && this.moveUnsupportedDrums) {
             if(midiNo in kit.Map) {
