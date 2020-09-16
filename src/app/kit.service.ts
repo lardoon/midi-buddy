@@ -4,12 +4,30 @@ import { Injectable } from "@angular/core";
 export class KitService {
   constructor() {}
 
+  DEFAULT_MAP : NoteMap = {
+        35: 36, // kick
+        34: 33, // metronome
+        32: 33, // metronome
+        47: 45, // mid tom
+        40: 38, // snare
+        41: 43, // low tom
+        52: 55 // china cymbal
+      }
+
   categories: { [key: string]: { [key: string]: string[] } } = {
     "General MIDI": {
       "General MIDI": ["Drums"]
     },
     Default: {
-      Standard: ["Drums"]
+      Brushes: ["Drums"],
+      Dance: ["Drums"],
+      Ethereal: ["Drums"],
+      Jazz: ["Drums"],
+      Latin: ["Drums"],
+      Metal: ["Drums"],
+      Rock: ["Drums"],
+      Standard: ["Drums"],
+      Voice: ["Drums"]
     },
     User: {
       "Rock with Bass": ["Drums", "Bass"],
@@ -95,16 +113,252 @@ export class KitService {
         27: "High Q (GM2)"
       }
     },
-    Standard: {
+    Brushes: {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash Cymbal 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    },
+    Dance: {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash Cymbal 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    },
+    Ethereal: {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash Cymbal 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    }, 
+      Jazz: {
+        Map: this.DEFAULT_MAP,
+        Drums: {
+        82: 'Shaker',
+        59: 'Ride 2',
+        57: 'Crash Ride 2',
+        55: 'Cowbell',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        52: 'Ride 1 Bow Crash',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        47: 'Hi-hat Foot Open',
+        46: 'Hi-hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Stick over stick on snare',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+        
+      }
+    },
+    Latin: {
       Map: {
-        35: 36, // kick
-        34: 33, // metronome
-        32: 33, // metronome
-        47: 45, // mid tom
-        40: 38, // snare
-        41: 43, // low tom
-        52: 55 // china cymbal
+        ...this.DEFAULT_MAP,
+        77: 76, // Woodblock
       },
+      Drums: {
+        104: 'Shekere Side to side',
+        103: 'Shekere Bass',
+        102: 'Shekere Down',
+        101: 'Shekere Up',
+        91: 'Timbales- cymbal ride',
+        90: 'Timbales- cymbal crash',
+        89: 'Timbales- cencero bell',
+        88: 'Timbales- Cha Cha bell',
+        87: 'Timbales- cascara L',
+        86: 'Timbales- cascara R',
+        82: 'Shaker',
+        81: 'Guira Long',
+        80: 'Guira Short',
+        79: 'Tumba Mute',
+        78: 'Tumba Open',
+        76: 'lam Block',
+        75: 'Clave',
+        74: 'Guiro Long',
+        73: 'Guiro- short',
+        71: 'Maracas R',
+        70: 'Maracas L',
+        69: 'Cabasa- long',
+        68: 'Cabasa- short',
+        67: 'Timbale Low Hand',
+        66: 'Timbale Low',
+        65: 'Timbale High',
+        64: 'Conga Open',
+        63: 'Quinto Mute',
+        62: 'Quinto Open',
+        61: 'Bongo Low',
+        60: 'Bongo High',
+        59: 'Splash 2',
+        58: 'Conga Mute',
+        57: 'Crash Cymbal 2',
+        56: 'Bongo Bell (Cowbell)',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclap',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    },
+    Metal: {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash Cymbal 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    },
+    Rock: {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash Cymbal 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    },
+    Voice: {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash Cymbal 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride C. Bell',
+        51: 'Ride Cymbal',
+        50: 'Tom 1',
+        49: 'Crash Cymbal 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick Drum',
+        33: 'Metronome',
+      }
+    },
+    Standard: {
+      Map: this.DEFAULT_MAP,
       Drums: {
         82: "Shaker",
         59: "Splash 2",
@@ -132,7 +386,15 @@ export class KitService {
     },
     "Rock with Bass": {
       Map: {
-        40: 38
+        40: 38, // snare
+        34: 37, // metronome
+        41: 43, // tow tom
+        47: 45, // mid tom
+        35: 36, // kick
+        52: 49, // china cymbal
+        55: 49, // splash 1
+        57: 49, // crash 2
+        59: 51, // ride 2
       },
       Bass: {
         start: 64,
