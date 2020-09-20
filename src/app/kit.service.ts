@@ -30,6 +30,14 @@ export class KitService {
       "Standard V2": ["Drums"],
       "Voice V2": ["Drums"]
     },
+    Premium: {
+      "Flamenco Percussion": ["Drums"],
+      "John Bonham Inspired": ["Drums"],
+      Reggae: ["Drums"],
+      "Standard Pro": ["Drums"],
+      "Studio Legend": ["Drums"],
+      "Vintage Ludwig": ["Drums"],
+    },
     User: {
       "Rock with Bass": ["Drums", "Bass"],
       "Standard P Bass": ["Drums", "Bass"],
@@ -407,6 +415,291 @@ export class KitService {
         36: "Kick Drum",
         33: "Metronome",
         1: "Snare"
+      }
+    },
+    "Flamenco Percussion": {
+      Drums: {
+        83: "Castanete Right Hand",
+        82: "Castanete Left Hand",
+        63: "Feet- tip",
+        62: "Feet- stomp",
+        61: "Feet- toe",
+        60: "Feet- heel",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        49: "Crash Cymbal 1",
+        42: "Hi-Hats Closed",
+        40: "Handclap R",
+        39: "Handclap L",
+        38: "Cajon Snare",
+        36: "Cajon Bass",
+        35: "Kick Drum",
+        34: "Bongo Low- muffled",
+        33: "Metronome",
+        32: "Bongo Low- open",
+        31: "Bongo Hi- fingers",
+        28: "Bongo Hi- palm",
+        27: "Bongo Hi- closed slap",
+        26: "Bongo Hi- slap",
+        25: "Bongo Hi- muffled",
+        24: "Bongo Hi- open",
+        23: "Tumba- bass",
+        22: "Tumba- palm",
+        21: "Tumba- fingers",
+        20: "Tumba- rumba slap",
+        19: "Tumba- Closed Slap",
+        18: "Tumba Open Slap",
+        17: "Tumba Muffled",
+        16: "Tumba Open",
+        15: "Quinto-bass",
+        14: "Quinto- palm",
+        13: "Quinto- Fingers",
+        12: "Quinto-Rumba Slap",
+        11: "Quinto- closed slap",
+        10: "Quinto- open slap",
+        9: "Quinto- muffled",
+        8: "Quinto-open",
+        7: "Conga- bass",
+        6: "Conga- palm",
+        5: "Conga- fingers",
+        4: "Conga-rumba slap",
+        3: "Conga- closed slap",
+        2: "Conga- open slap",
+        1: "Conga- muffled",
+        0: "Conga- open"
+      }
+    },
+    "John Bonham Inspired": {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: "Shaker",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "Hi-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hi-Hats Closed",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+        33: "Metronome"
+      }
+    },
+    Reggae: {
+      Map: {
+        35: 36, // kick
+        34: 33, // metronome
+        32: 33, // metronome
+        47: 45, // mid tom
+        41: 43 // low tom
+      },
+      Drums: {
+        82: "Shaker",
+        81: "Triangle Open",
+        80: "Triangle Closed",
+        77: "Woodblock Low",
+        76: "Woodblock Med",
+        75: "Woodblock Hi",
+        70: "Shaker 2",
+        69: "Cabasa",
+        68: "Bottle Low",
+        67: "Bottle Hi",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        52: "Trashformer cymbal",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "Hi-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hats dosed",
+        40: "Aux Snare",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+        33: "Metronome"
+      }
+    },
+    "Standard Pro": {
+      Map: {
+        34: 33, // metronome
+        32: 33, // metronome
+        47: 45, // mid tom
+        41: 43 // low tom
+      },
+      Drums: {
+        83: "Castanetes",
+        82: "Shaker",
+        81: "Open Triangle",
+        80: "Mute Triangle",
+        79: "Open Cuica",
+        78: "Mute Cuica",
+        77: "Low Woodblock",
+        76: "Hi Woodblock",
+        75: "Clave",
+        74: "Long Guiro",
+        73: "Short Guiro",
+        72: "Long Whistle",
+        71: "Short Whistle",
+        70: "Maracas",
+        69: "Cabasa",
+        68: "Agogo Low",
+        67: "High Agogo",
+        66: "Low Timbale",
+        65: "High Timbale",
+        64: "Low Conga",
+        63: "Open High Conga",
+        62: "Hi Conga Mute",
+        61: "Low Bongo",
+        60: "Hi Bongo",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        52: "China Cymbal",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "Hi-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hi-Hats Closed",
+        40: "Electronic Snare",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Suck",
+        36: "Kick Drum",
+        35: "Acoustic Kick",
+        33: "Metronome"
+      }
+    },
+    "Studio Legend": {
+      Map: {
+        35: 36, // kick
+        34: 33, // metronome
+        32: 33, // metronome
+        47: 45, // mid tom
+        40: 38, // snare
+        41: 43 // low tom
+      },
+      Drums: {
+        82: "Shaker",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        52: "Trashformer cymbal",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "HI-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hat closed",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+        33: "Metronome"
+      }
+    },
+    "Vintage Ludwig": {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: "Shaker",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "Hi-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hi-Hats Closed",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+        33: "Metronome"
+      }
+    },
+    "World Percussion": {
+      Map: {
+        35: 36, // kick
+        34: 33, // metronome
+        32: 33, // metronome
+        47: 45, // mid tom
+        40: 38, // snare
+        52: 55 // china cymbal
+      },
+      Drums: {
+        85: "Bongo Low- palm",
+        84: "Bongo Low- closed slap",
+        82: "Shaker",
+        75: "Clave",
+        59: "Splash 2",
+        57: "Hand Crash 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Shaker 3",
+        51: "Shaker 2",
+        49: "Hand Crash 1",
+        45: "Udu Belly Bend",
+        42: "Shaker 1",
+        41: "Udu Open",
+        38: "Cajon Snare",
+        36: "Cajon Bass",
+        33: "Metronome",
+        32: "Bongo Low- open",
+        31: "Bongo Hi- fingers",
+        29: "Bongo Low- Finger",
+        28: "Bongo Hi- palm",
+        27: "Bongo Hi- finger slap",
+        26: "Bongo Hi- slap",
+        25: "Bongo Hi- muffled",
+        24: "Bongo Hi- open",
+        13: "Mini Bongo Hi- Fingers",
+        11: "Mini Bongo Hi- closed slap",
+        8: "Mini Bongo-open",
+        5: "Mini Bongo Low- fingers",
+        1: "Mini Bongo Low- muffled",
+        0: "Mini Bongo Low- open"
       }
     },
     "Rock with Bass": {
