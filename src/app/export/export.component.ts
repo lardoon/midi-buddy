@@ -16,10 +16,14 @@ export class ExportComponent implements OnInit {
   @Input()
   set midi(value: Midi) {
     this._midi = value;
-    this.fileName = this.createMidiFileName();
+    this.updateMidiFileName();
   }
   get midi(): Midi {
     return this._midi;
+  }
+
+  updateMidiFileName() {
+    this.fileName = this.createMidiFileName();
   }
   
   @Input()
@@ -107,7 +111,9 @@ export class ExportComponent implements OnInit {
   createMidiFileName(): string {
     if(!this.midi)
       return null;
-    return `${this.midi.name || 'export'} (${this.instrumentSelection.filter(i => i.value).map(i => i.value).filter((x, i, a) => a.indexOf(x) == i).join('  ')}).mid`.replace(',',' ');
+    // make sure commas and periods (.) are removed from the name
+    let name = `${this.midi.name || 'export'} (${this.instrumentSelection.filter(i => i.value).map(i => i.value).filter((x, i, a) => a.indexOf(x) == i).join('  ')})`.replace(/,|\./g,' ').replace(/\s{2,}/g, ' ');
+    return `${name}.mid`
   }
 
   isDisabled() : boolean {

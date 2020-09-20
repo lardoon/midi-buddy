@@ -1,3 +1,8 @@
+<mat-card class="mat-elevation-z0">
+  <mat-card-title>One-Press Song Creator</mat-card-title>
+    <mat-card-subtitle>A tool for quickly and easily creating One-Press parts for the BeatBuddy from midi files</mat-card-subtitle>
+  </mat-card>
+
 <mat-horizontal-stepper [linear]="false" #stepper>
 	<mat-step>
 		<ng-template matStepLabel>Upload file</ng-template>
@@ -26,7 +31,7 @@
 				<mat-checkbox [(ngModel)]="remove0VelocityNotes">Remove 0 velocity notes</mat-checkbox>
 			</div -->
 			<div>Transpose <input [(ngModel)]="transpose" max="12" min="-12" type="number" value="0"></div>
-				<select #kitSelector [(ngModel)]="kitSelection" (change)="presetInstrumentSelection()">
+				<select #kitSelector [(ngModel)]="kitSelection" (change)="presetInstrumentSelection();export.updateMidiFileName()">
     <optgroup *ngFor="let kitGroup of presets | keyvalue" [label]="kitGroup.key">
       <option *ngFor="let kit of kitGroup.value | keyvalue" [ngValue]="kit.key">{{kit.key}} ({{kit.value}})</option>
     </optgroup>
@@ -75,7 +80,10 @@
 	</mat-step>
 	<mat-step>
 		<ng-template matStepLabel>Export Midi</ng-template>
-		<app-export [transpose]="transpose" [moveUnsupportedNotes]="moveNotes" [moveUnsupportedDrums]="moveDrums" [midi]="midi" [remove0VelocityNotes]="remove0VelocityNotes" [kitSelection]="kitSelection" [instrumentSelection]="instrumentSelection">
+    <div>
+			<button mat-button matStepperPrevious>Previous</button>
+    </div>
+		<app-export #export [transpose]="transpose" [moveUnsupportedNotes]="moveNotes" [moveUnsupportedDrums]="moveDrums" [midi]="midi" [remove0VelocityNotes]="remove0VelocityNotes" [kitSelection]="kitSelection" [instrumentSelection]="instrumentSelection">
 		</app-export>
 	</mat-step>
 </mat-horizontal-stepper>

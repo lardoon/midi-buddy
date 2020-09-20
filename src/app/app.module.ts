@@ -26,6 +26,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatStepperModule } from "@angular/material/stepper";
 import { ExportComponent } from './export/export.component';
 import { KitService } from './kit.service';
+import { ChangelogComponent } from './changelog/changelog.component';
+import { MatTabsModule } from "@angular/material/tabs";
 
 
 @NgModule({
@@ -49,9 +51,10 @@ import { KitService } from './kit.service';
     MatInputModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTabsModule
   ],
-  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, ExportComponent],
+  declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, ExportComponent, ChangelogComponent],
   bootstrap: [AppComponent],
   schemas: [],
   providers: [KitService]

@@ -1,9 +1,10 @@
 <mat-sidenav-container fullscreen>
 	<mat-sidenav #sidenav class="app-sidenav">
 		<mat-nav-list>
-      <h3 matSubheader>Midi Buddy</h3>
+      <h3 matSubheader>Midi Buddy 1.0.0</h3>
 			<a mat-list-item routerLink="/"><mat-icon>home</mat-icon></a>
-			<a mat-list-item routerLink="/drumkit">Custom Kit</a>
+      <a mat-list-item routerLink="/changelog"><mat-icon>change_history</mat-icon> Change Log</a>
+			<!-- a mat-list-item routerLink="/drumkit">Custom Kit</a -->
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
@@ -12,7 +13,7 @@
         <mat-icon>menu</mat-icon>
       </button> Midi Buddy
 			<span class="fill-spacer"></span>
-			<button mat-icon-button [matMenuTriggerFor]="moreMenu">
+			<!-- button mat-icon-button [matMenuTriggerFor]="moreMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
 			<mat-menu #moreMenu="matMenu">
@@ -24,7 +25,7 @@
           <mat-icon>help</mat-icon>
           Help
         </button>
-			</mat-menu>
+			</mat-menu -->
 		</mat-toolbar>
 		<router-outlet></router-outlet>
 		
