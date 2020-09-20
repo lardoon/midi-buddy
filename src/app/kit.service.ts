@@ -31,12 +31,13 @@ export class KitService {
       "Voice V2": ["Drums"]
     },
     Premium: {
+      "Custom Retro": ["Drums"],
       "Flamenco Percussion": ["Drums"],
       "John Bonham Inspired": ["Drums"],
       Reggae: ["Drums"],
       "Standard Pro": ["Drums"],
       "Studio Legend": ["Drums"],
-      "Vintage Ludwig": ["Drums"],
+      "Vintage Ludwig": ["Drums"]
     },
     User: {
       "Rock with Bass": ["Drums", "Bass"],
@@ -415,6 +416,34 @@ export class KitService {
         36: "Kick Drum",
         33: "Metronome",
         1: "Snare"
+      }
+    },
+    "Custom Retro": {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: "Shaker",
+        81: "Triangle Open",
+        80: "Triangle Closed",
+        59: "Splash 2",
+        57: "Crash Cymbal 2",
+        56: "Cowbell",
+        55: "Splash 1",
+        54: "Tambourine",
+        53: "Ride C. Bell",
+        51: "Ride Cymbal",
+        50: "Tom 1",
+        49: "Crash Cymbal 1",
+        48: "Tom 2",
+        46: "HI-Hat Open",
+        45: "Tom 3",
+        44: "Foot Hi-Hat",
+        43: "Tom 4",
+        42: "Hat closed",
+        39: "Handclaps",
+        38: "Snare",
+        37: "Cross Stick",
+        36: "Kick Drum",
+        33: "Metronome"
       }
     },
     "Flamenco Percussion": {
