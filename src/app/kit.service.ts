@@ -734,6 +734,10 @@ export class KitService {
       }
     },
     "Bosendorfer Jazz Trio 60+C1": {
+      Map: {
+        40: 38, // Snare
+        41: 43, // low tom
+      },
       Bass: {
         start: 0,
         end: 31,
