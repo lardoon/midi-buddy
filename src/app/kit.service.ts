@@ -41,9 +41,11 @@ export class KitService {
     },
     User: {
       "Rock with Bass": ["Drums", "Bass"],
+      "Rock and Rick Bass 0-31": ["Drums", "Bass"],
       "Standard P Bass": ["Drums", "Bass"],
       "2082 Hammond with Bass 60+C0": ["Drums", "Bass", "Organ"],
-      "Sub-Std Pro PL Bass 0-31": ["Drums", "Bass"]
+      "Sub-Std Pro PL Bass 0-31": ["Drums", "Bass"],
+      "Bosendorfer Jazz Trio 60+C1": ["Drums","Bass","Piano"]
     }
   };
 
@@ -731,6 +733,42 @@ export class KitService {
         0: "Mini Bongo Low- open"
       }
     },
+    "Bosendorfer Jazz Trio 60+C1": {
+      Bass: {
+        start: 0,
+        end: 31,
+        middleC4: 36
+      },
+      Piano: {
+        start: 60,
+        end: 127,
+        middleC4: 96
+      },
+      Drums: {
+        59: 'Ride 2',
+        57: 'Crash Ride 2',
+        56: 'Cowbell',
+        54: 'Tambourine',
+        53: 'Ride Bell',
+        52: 'Ride 1 Bow Crash',
+        51: 'Ride 1',
+        50: 'Tom 1',
+        49: 'Crash 1',
+        48: 'Tom 2',
+        47: 'Foot Hat Open',
+        46: 'Hats Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Closed Hats',
+        39: 'Stick over stick on snare',
+        38: 'Snare',
+        37: 'Cross Stix',
+        36: 'Kick 1',
+        35: 'Kick 2',
+        33: 'Clave',
+      }
+    },
     "Rock with Bass": {
       Map: {
         40: 38, // snare
@@ -763,6 +801,37 @@ export class KitService {
         38: "Snare",
         37: "Cross Stick",
         36: "Kick Drum"
+      }
+    },
+    "Rock and Rick Bass 0-31": {
+      Map: this.DEFAULT_MAP,
+      Drums: {
+        82: 'Shaker',
+        59: 'Splash 2',
+        57: 'Crash 2',
+        56: 'Cowbell',
+        55: 'Splash 1',
+        54: 'Tambourine',
+        53: 'Ride Bell',
+        51: 'Ride',
+        50: 'Tom 1',
+        49: 'Crash 1',
+        48: 'Tom 2',
+        46: 'Hi-Hat Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Hi-Hats Closed',
+        39: 'Handclaps',
+        38: 'Snare',
+        37: 'Cross Stick',
+        36: 'Kick',
+        33: 'Metronome',
+      },
+      Bass: {
+        start: 0,
+        end: 31,
+        middleC4: 36
       }
     },
     "Standard P Bass": {

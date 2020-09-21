@@ -33,7 +33,7 @@
 			<div>Transpose <input [(ngModel)]="transpose" max="12" min="-12" type="number" value="0"></div>
 				<select #kitSelector [(ngModel)]="kitSelection" (change)="presetInstrumentSelection();export.updateMidiFileName()">
     <optgroup *ngFor="let kitGroup of presets | keyvalue" [label]="kitGroup.key">
-      <option *ngFor="let kit of kitGroup.value | keyvalue" [ngValue]="kit.key">{{kit.key}} ({{kit.value}})</option>
+      <option *ngFor="let kit of kitGroup.value | keyvalue" [ngValue]="kit.key">{{kit.key}} ({{kit.value.join(', ')}})</option>
     </optgroup>
     
   </select>
