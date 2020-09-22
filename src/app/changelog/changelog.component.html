@@ -2,25 +2,12 @@
 	<mat-tab label="One-Press Song Creator">
 		<mat-card >
 			<mat-list>
-        <div mat-header>1.0.2</div>
-				<mat-list-item>
-					<div mat-line>Added 3 user kits including Bosendorfer Jazz Trio 60+C1</div>
-				</mat-list-item>
-        <div mat-header>1.0.1</div>
-				<mat-list-item>
-					<div mat-line>Added Premium kits</div>
-				</mat-list-item>
-        
-				<div mat-header>1.0.0</div>
-				<mat-list-item>
-					<div mat-line>Initial release</div>
-				</mat-list-item>
-				<mat-list-item>
-					<div mat-line>Included Default V2 kits in kit selector</div>
-				</mat-list-item>
-        <mat-list-item>
-					<div mat-line>Included 4 user kits in kit selector</div>
-				</mat-list-item>
+        <ng-template ngFor let-log [ngForOf]="onePressSongCreatorlog | keyvalue">
+          <div mat-header>{{log.key}}</div>
+          <mat-list-item>
+            <div mat-line *ngFor="let line of log.value">{{line}}</div>
+          </mat-list-item>
+        </ng-template>
 			</mat-list>
 		</mat-card>
 	</mat-tab>
