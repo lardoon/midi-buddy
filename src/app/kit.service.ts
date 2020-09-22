@@ -45,7 +45,8 @@ export class KitService {
       "Standard P Bass": ["Drums", "Bass"],
       "2082 Hammond with Bass 60+C0": ["Drums", "Bass", "Organ"],
       "Sub-Std Pro PL Bass 0-31": ["Drums", "Bass"],
-      "Bosendorfer Jazz Trio 60+C1": ["Drums","Bass","Piano"]
+      "Bosendorfer Jazz Trio 60+C1": ["Drums","Bass","Piano"],
+      "Bosendorfer Jazz Trio 72+C2": ["Drums","Bass","Piano"]
     }
   };
 
@@ -749,6 +750,58 @@ export class KitService {
         middleC4: 96
       },
       Drums: {
+        59: 'Ride 2',
+        57: 'Crash Ride 2',
+        56: 'Cowbell',
+        54: 'Tambourine',
+        53: 'Ride Bell',
+        52: 'Ride 1 Bow Crash',
+        51: 'Ride 1',
+        50: 'Tom 1',
+        49: 'Crash 1',
+        48: 'Tom 2',
+        47: 'Foot Hat Open',
+        46: 'Hats Open',
+        45: 'Tom 3',
+        44: 'Foot Hi-Hat',
+        43: 'Tom 4',
+        42: 'Closed Hats',
+        39: 'Stick over stick on snare',
+        38: 'Snare',
+        37: 'Cross Stix',
+        36: 'Kick 1',
+        35: 'Kick 2',
+        33: 'Clave',
+      }
+    },
+    "Bosendorfer Jazz Trio 72+C2": {
+      Map: {
+        40: 38, // Snare
+        41: 43, // low tom
+      },
+      Bass: {
+        start: 0,
+        end: 31,
+        middleC4: 36
+      },
+      Piano: {
+        start: 72,
+        end: 127,
+        middleC4: 96
+      },
+      Drums: {
+        71: 'Shekere',
+        70: 'Shaker',
+        69: 'Cabasa',
+        68: 'Low Agogo',
+        67: 'High Agogo',
+        66: 'Low Timbale',
+        65: 'Mid Timbale',
+        64: 'High Timbale',
+        63: 'Low Conga',
+        62: 'High Conga',
+        61: 'Low Bongo',
+        60: 'High Bongo',
         59: 'Ride 2',
         57: 'Crash Ride 2',
         56: 'Cowbell',
