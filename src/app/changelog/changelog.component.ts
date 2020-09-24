@@ -10,6 +10,9 @@ export class ChangelogComponent implements OnInit {
   constructor() { }
 
   onePressSongCreatorlog: {[key:string]:string[]} = {
+    "1.0.3": [
+      "Added STAX Synth & Strings kit"
+    ],
     "1.0.2": [
       "Added 3 user kits including Bosendorfer Jazz Trio 60+C1"
     ],
