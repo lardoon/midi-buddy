@@ -46,7 +46,8 @@ export class KitService {
       "2082 Hammond with Bass 60+C0": ["Drums", "Bass", "Organ"],
       "Sub-Std Pro PL Bass 0-31": ["Drums", "Bass"],
       "Bosendorfer Jazz Trio 60+C1": ["Drums","Bass","Piano"],
-      "Bosendorfer Jazz Trio 72+C2": ["Drums","Bass","Piano"]
+      "Bosendorfer Jazz Trio 72+C2": ["Drums","Bass","Piano"],
+      "STAX Synth & Strings": ["Drums","Bass","Synth","Strings"],
     }
   };
 
@@ -1040,6 +1041,53 @@ export class KitService {
         36: "Kick Drum",
         35: "Acoustic Kick",
         33: "Metronome"
+      }
+    },
+    "STAX Synth & Strings": {
+      Bass: {
+        start: 0,
+        end: 31,
+        middleC4: 36
+      },
+      Strings: {
+        start: 96,
+        end: 127,
+        middleC4: 108
+      },
+      Synth: {
+        start: 60,
+        end: 95,
+        middleC4: 84
+      },
+      Drums: {
+        59: 'Shaker',
+        58: 'Crash Stop',
+        57: 'Crash 2',
+        56: 'Cowbell',
+        55: 'Hat Splash',
+        54: 'Tambourine',
+        53: 'Ride Bell',
+        52: 'Ride Edge',
+        51: 'Ride',
+        50: 'Hi-Tom 1',
+        49: 'Crash 1',
+        48: 'Hi-Tom 2',
+        47: 'Mid Tom 1',
+        46: 'Open Hats',
+        45: 'Mid Tom 2',
+        44: 'Pedal Hats',
+        43: 'Low Tom 1',
+        42: 'Closed Hats',
+        41: 'Low Floor Tom',
+        40: 'Snare 2',
+        39: 'Hand Claps',
+        38: 'Snare',
+        37: 'Stick to Rim',
+        36: 'Kick',
+        35: 'Alt Kick',
+        34: 'Snare Edge',
+        33: 'Hi-Hat Foot Closed',
+        32: 'Sticks',
       }
     }
   };
