@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef,  Input, OnInit, ViewChild } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 
 import * as mm from '@magenta/music/es6';
@@ -11,7 +11,7 @@ import * as mm from '@magenta/music/es6';
 export class VisualiserComponent implements OnInit {
 
   @ViewChild('visualiserCanvas')
-  visualiserCanvas: HTMLCanvasElement;
+  visualiserCanvas: ElementRef;
 
   visualiser: mm.Visualizer;
 
@@ -29,9 +29,12 @@ export class VisualiserComponent implements OnInit {
     }
   }
 
+  @Input()
+  svgVisualiser: boolean = false;
+
   visualise() {
     const sequence = mm.midiToSequenceProto(this.midi.toArray());
-    this.visualiser =  new mm.Visualizer(sequence, this.visualiserCanvas);
+    this.visualiser =  new mm.Visualizer(sequence, this.visualiserCanvas.nativeElement);
   }
 
   constructor() { }

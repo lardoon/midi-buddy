@@ -1,1 +1,2 @@
-<canvas #visualiserCanvas></canvas>
+<canvas *ngIf="!svgVisualiser" #visualiserCanvas></canvas>
+<div *ngIf="svgVisualiser"></div>
