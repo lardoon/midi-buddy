@@ -41,7 +41,7 @@
 				<button mat-button (click)="clearPresetInstruments()"><mat-icon>clear</mat-icon>Clear</button>
 
 			</div>
-
+      <app-visualiser [midi]="midi"></app-visualiser>
 			<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
 
 				<ng-container matColumnDef="name">

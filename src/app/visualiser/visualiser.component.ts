@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 
 import * as mm from '@magenta/music/es6';
@@ -21,6 +21,7 @@ export class VisualiserComponent implements OnInit {
     return this._midi;
   }
 
+  @Input()
   set midi(value: Midi) {
     this._midi = value;
     if(value) {
