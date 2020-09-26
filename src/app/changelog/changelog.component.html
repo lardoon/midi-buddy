@@ -2,7 +2,7 @@
 	<mat-tab label="One-Press Song Creator">
 		<mat-card >
 			<mat-list>
-        <ng-template ngFor let-log [ngForOf]="onePressSongCreatorlog | keyvalue">
+        <ng-template ngFor let-log [ngForOf]="log | keyvalue">
           <div mat-header>{{log.key}}</div>
           <mat-list-item>
             <div mat-line *ngFor="let line of log.value">{{line}}</div>

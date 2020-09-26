@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-changelog',
@@ -9,7 +9,17 @@ export class ChangelogComponent implements OnInit {
 
   constructor() { }
 
-  onePressSongCreatorlog: {[key:string]:string[]} = {
+  public static get latestVersionNo() {
+    let versions = Object.keys(ChangelogComponent.onePressSongCreatorlog);
+    versions.sort();
+    return versions[versions.length - 1];
+  }
+  
+  get log() {
+    return ChangelogComponent.onePressSongCreatorlog;
+  }
+
+  public static onePressSongCreatorlog: {[key:string]:string[]} = {
     "1.0.3": [
       "Added STAX Synth & Strings kit"
     ],
