@@ -1,2 +1,2 @@
-<midi-player #midiPlayer visualizer="#visualizer"></midi-player>
-<midi-visualizer [type]="visualiserType" id="visualizer"></midi-visualizer>
+<svg *ngIf="type == 'SVG'"></svg>
+<canvas *ngIf="type == 'Canvas'"></canvas>

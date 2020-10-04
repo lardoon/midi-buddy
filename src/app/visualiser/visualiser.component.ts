@@ -2,7 +2,6 @@ import { Component, ElementRef,  Input, OnInit, ViewChild, AfterViewInit } from 
 import { Midi } from '@tonejs/midi';
 
 import * as mm from '@magenta/music/es6';
-import * as vm from 'html-midi-player';
 
 @Component({
   selector: 'app-visualiser',
@@ -14,11 +13,9 @@ export class VisualiserComponent implements OnInit, AfterViewInit {
   noteSequence: mm.NoteSequence;
 
   @Input()
-  visualiserType: string;
+  type: string = VisualiserType.SVG;
 
-  @ViewChild(vm.PlayerElement)
-  midiPlayer: vm.PlayerElement;
-  
+
 
   constructor() { }
 
@@ -27,7 +24,12 @@ export class VisualiserComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let player = this.midiPlayer;
+
   }
 
+}
+
+class VisualiserType {
+  static SVG = 'SVG';
+  static Canvas = 'Canvas'
 }
