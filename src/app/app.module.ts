@@ -57,7 +57,7 @@ import { VisualiserComponent } from './visualiser/visualiser.component';
   ],
   declarations: [AppComponent, DrumkitCreatorComponent, TrackEditorComponent, ExportComponent, ChangelogComponent, VisualiserComponent],
   bootstrap: [AppComponent],
-  schemas: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [KitService]
 })
 export class AppModule {}
