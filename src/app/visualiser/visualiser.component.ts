@@ -1,4 +1,4 @@
-import { Component, ElementRef,  Input, OnInit, ViewChild,  } from '@angular/core';
+import { Component, ElementRef,  Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 
 import * as mm from '@magenta/music/es6';
@@ -9,7 +9,7 @@ import * as vm from 'html-midi-player';
   templateUrl: './visualiser.component.html',
   styleUrls: ['./visualiser.component.css']
 })
-export class VisualiserComponent implements OnInit {
+export class VisualiserComponent implements OnInit, AfterViewInit {
 
   noteSequence: mm.NoteSequence;
 
@@ -23,11 +23,11 @@ export class VisualiserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let player = this.midiPlayer;
+    
   }
 
-  ngOnViewInit() {
-
+  ngAfterViewInit() {
+    let player = this.midiPlayer;
   }
 
 }
