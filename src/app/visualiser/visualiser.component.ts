@@ -2,6 +2,7 @@ import { Component, ElementRef,  Input, OnInit, ViewChild } from '@angular/core'
 import { Midi } from '@tonejs/midi';
 
 import * as mm from '@magenta/music/es6';
+import * as vm from 'html-midi-visualizer';
 
 @Component({
   selector: 'app-visualiser',
