@@ -11,6 +11,8 @@ import { KitService } from '../kit.service';
 })
 export class TrackEditorComponent implements OnInit {
 
+  expanded()  { return true };
+
   displayColumns = ['name', 'channel', 'instrument', 'family', 'kitInstrument'];
 
   presets:{[key:string]: {[key:string]:string[]}} = {  }

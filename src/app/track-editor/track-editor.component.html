@@ -1,7 +1,8 @@
 <mat-card class="mat-elevation-z0">
-  <mat-card-title>One-Press Song Creator</mat-card-title>
-    <mat-card-subtitle>A tool for quickly and easily creating One-Press parts for the BeatBuddy from midi files</mat-card-subtitle>
-  </mat-card>
+	<mat-card-title>One-Press Song Creator</mat-card-title>
+	<mat-card-subtitle>A tool for quickly and easily creating One-Press parts for the BeatBuddy from midi files
+	</mat-card-subtitle>
+</mat-card>
 
 <mat-horizontal-stepper [linear]="false" #stepper>
 	<mat-step>
@@ -25,9 +26,10 @@
 				<mat-checkbox [(ngModel)]="moveNotes">Move unsupported notes to nearest octave</mat-checkbox>
 			</div>
 			<div>
-				<mat-checkbox [(ngModel)]="moveDrums">Move unsupported drums to closest equivalent (tom 4 to tom 3 etc)</mat-checkbox>
+				<mat-checkbox [(ngModel)]="moveDrums">Move unsupported drums to closest equivalent (tom 4 to tom 3 etc)
+				</mat-checkbox>
 			</div>
-      <!-- div>
+			<!-- div>
 				<mat-checkbox [(ngModel)]="remove0VelocityNotes">Remove 0 velocity notes</mat-checkbox>
 			</div -->
 			<div>Transpose <input [(ngModel)]="transpose" max="12" min="-12" type="number" value="0"></div>
@@ -41,15 +43,15 @@
 				<button mat-button (click)="clearPresetInstruments()"><mat-icon>clear</mat-icon>Clear</button>
 
 			</div>
-      
+
 			<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
 
 				<ng-container matColumnDef="name">
 					<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
 					<mat-cell [ngClass]="{'track-no-name': !track.name}" *matCellDef="let track; let i = index">
-						{{track.name || 'Track ' + (i + 1)}} 
-            
-            </mat-cell>
+						{{track.name || 'Track ' + (i + 1)}}
+
+					</mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="channel">
@@ -76,19 +78,27 @@
       </select> </mat-cell>
 				</ng-container>
 
+				<ng-container matColumnDef="visualiser">
+					<mat-cell *matCellDef="let track; let i = index">
+						<app-visualiser [midi]="midi" [trackIndex]="i"></app-visualiser>
+					</mat-cell>
+				</ng-container>
+
 				<mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
-        <mat-row *matRowDef="let row; let i = index; when true;">
-          <app-visualiser [midi]="midi" [trackIndex]="i" ></app-visualiser>
-        </mat-row>
+				<mat-row *matRowDef="let row; let i = index; columns: ['visualiser'] when expanded;">
+
+				</mat-row>
 			</mat-table>
 	</mat-step>
 	<mat-step>
 		<ng-template matStepLabel>Export Midi</ng-template>
-    <div>
+		<div>
 			<button mat-button matStepperPrevious>Previous</button>
-    </div>
-		<app-export #export [transpose]="transpose" [moveUnsupportedNotes]="moveNotes" [moveUnsupportedDrums]="moveDrums" [midi]="midi" [remove0VelocityNotes]="remove0VelocityNotes" [kitSelection]="kitSelection" [instrumentSelection]="instrumentSelection">
+		</div>
+		<app-export #export [transpose]="transpose" [moveUnsupportedNotes]="moveNotes"
+			[moveUnsupportedDrums]="moveDrums" [midi]="midi" [remove0VelocityNotes]="remove0VelocityNotes"
+			[kitSelection]="kitSelection" [instrumentSelection]="instrumentSelection">
 		</app-export>
 	</mat-step>
 </mat-horizontal-stepper>
