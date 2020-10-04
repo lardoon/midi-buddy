@@ -2,16 +2,24 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Midi } from '@tonejs/midi';
 import { FormControl } from '@angular/forms';
 import { KitService } from '../kit.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-track-editor',
   templateUrl: './track-editor.component.html',
-  styleUrls: ['./track-editor.component.css']
+  styleUrls: ['./track-editor.component.css'],
+  animations: [
+    trigger('previewExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class TrackEditorComponent implements OnInit {
 
-  expanded()  { return true };
+  previewExpand()  { return true };
 
   displayColumns = ['name', 'channel', 'instrument', 'family', 'kitInstrument'];
 
