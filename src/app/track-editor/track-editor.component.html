@@ -41,13 +41,15 @@
 				<button mat-button (click)="clearPresetInstruments()"><mat-icon>clear</mat-icon>Clear</button>
 
 			</div>
-      <app-visualiser ></app-visualiser>
+      
 			<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
 
 				<ng-container matColumnDef="name">
 					<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
 					<mat-cell [ngClass]="{'track-no-name': !track.name}" *matCellDef="let track; let i = index">
-						{{track.name || 'Track ' + (i + 1)}} </mat-cell>
+						{{track.name || 'Track ' + (i + 1)}} 
+            <app-visualiser [midi]="midi" [trackIndex]="i" ></app-visualiser>
+            </mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="channel">

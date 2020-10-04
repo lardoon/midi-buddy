@@ -10,6 +10,8 @@ import * as mm from '@magenta/music/es6';
 })
 export class VisualiserComponent implements OnInit, AfterViewInit {
 
+  initialised: boolean = false;
+
   @ViewChild('svg')
   svgElement: ElementRef<SVGSVGElement>;
 
@@ -41,12 +43,16 @@ export class VisualiserComponent implements OnInit, AfterViewInit {
   };
 
   visualise() {
+    if(!this.initialised)
+      return;
     let trackMidi = new Midi();
     trackMidi.header = this.midi.header;
     let newTrack = trackMidi.addTrack();
     let track = this.midi.tracks[this.trackIndex];
-    newTrack.fromJSON(newTrack.toJSON());
+    newTrack.fromJSON(track.toJSON());
     let noteSequence = mm.midiToSequenceProto(trackMidi.toArray());
+    if(!noteSequence.totalTime)
+      return;
     let visualiser = new mm.PianoRollSVGVisualizer(noteSequence, this.svgElement.nativeElement);
   }
 
@@ -57,7 +63,8 @@ export class VisualiserComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    
+    this.initialised = true;
+    this.visualise();
   }
 
 }
