@@ -16,8 +16,8 @@ export class VisualiserComponent implements OnInit, AfterViewInit {
   @Input()
   visualiserType: string;
 
-  @ViewChild('#midiPlayer')
-  midiPlayer: ElementRef;
+  @ViewChild(vm.PlayerElement)
+  midiPlayer: vm.PlayerElement;
   
 
   constructor() { }
