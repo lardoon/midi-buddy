@@ -43,56 +43,58 @@
 				<button mat-button (click)="clearPresetInstruments()"><mat-icon>clear</mat-icon>Clear</button>
 
 			</div>
-
-			<mat-table *ngIf="midi?.tracks" [dataSource]="midi?.tracks">
-
-				<ng-container matColumnDef="name">
-					<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-					<mat-cell [ngClass]="{'track-no-name': !track.name}" *matCellDef="let track; let i = index">
+      <table mat-table
+       [dataSource]="midi?.tracks" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+					<th mat-header-cell *matHeaderCellDef> Name </th>
+					<td mat-cell [ngClass]="{'track-no-name': !track.name}" *matCellDef="let track; let i = index">
 						{{track.name || 'Track ' + (i + 1)}}
 
-					</mat-cell>
+					</td>
 				</ng-container>
 
 				<ng-container matColumnDef="channel">
-					<mat-header-cell *matHeaderCellDef> Channel </mat-header-cell>
-					<mat-cell *matCellDef="let track"> {{track.channel + 1}} </mat-cell>
+					<th mat-header-cell *matHeaderCellDef> Channel </th >
+					<td mat-cell *matCellDef="let track"> {{track.channel + 1}} </td >
 				</ng-container>
 
 				<ng-container matColumnDef="instrument">
-					<mat-header-cell *matHeaderCellDef> Instrument </mat-header-cell>
-					<mat-cell *matCellDef="let track"> {{track.instrument.name | titlecase}} </mat-cell>
+					<th mat-header-cell *matHeaderCellDef> Instrument </th >
+					<td mat-cell *matCellDef="let track"> {{track.instrument.name | titlecase}} </td >
 				</ng-container>
 
 				<ng-container matColumnDef="family">
-					<mat-header-cell *matHeaderCellDef> Family </mat-header-cell>
-					<mat-cell *matCellDef="let track"> {{track.instrument.family | titlecase}} </mat-cell>
+					<th mat-header-cell *matHeaderCellDef> Family </th >
+					<td mat-cell *matCellDef="let track"> {{track.instrument.family | titlecase}} </td >
 				</ng-container>
 
 				<ng-container matColumnDef="kitInstrument">
-					<mat-header-cell *matHeaderCellDef> Kit Instrument Selection </mat-header-cell>
-					<mat-cell *matCellDef="let track; let i = index">
+					<th mat-header-cell *matHeaderCellDef> Kit Instrument Selection </th >
+					<td mat-cell *matCellDef="let track; let i = index">
 						<select [formControl]="instrumentSelection[i]">
         <option></option>
         <option *ngFor="let kitInstrument of getKitInstruments()" [value]="kitInstrument" >{{kitInstrument}}</option>
-      </select> </mat-cell>
+      </select> </td >
 				</ng-container>
+  
 
-				<ng-container matColumnDef="visualiser">
-					<mat-cell *matCellDef="let track; let i = index">
-						<app-visualiser [midi]="midi" [trackIndex]="i"></app-visualiser>
-					</mat-cell>
-				</ng-container>
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let track; let i = index;" [attr.colspan]="displayColumns.length">
+      <app-visualiser class="example-element-detail" [@trackExpanded]="track == expandedTrack ? 'expanded' : 'collapsed'" [midi]="midi" [trackIndex]="i"></app-visualiser>
+    </td>
+  </ng-container>
 
-				<mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
-				<mat-row *matRowDef="let track; columns: displayColumns;"
-                class="data-row"
-                [class.preview-row]="expandedTrack === track"
-                (click)="expandedTrack = expandedTrack === track ? null : track" ></mat-row>
-				<mat-row *matRowDef="let row; let i = index; columns: ['visualiser'] when expanded;" class="preview-row">
-
-				</mat-row>
-			</mat-table>
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayColumns;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedTrack === element"
+      (click)="expandedTrack = expandedTrack === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+			
 	</mat-step>
 	<mat-step>
 		<ng-template matStepLabel>Export Midi</ng-template>
