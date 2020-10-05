@@ -32,7 +32,7 @@ export class VisualiserComponent implements OnInit, AfterViewInit {
   }
   _trackIndex: number;
   @Input()
-  set trackIndex(value: number) {
+  set trackIndex(value) {
     if(this._trackIndex !== value) {
       this._trackIndex = value;
       this.visualise();
